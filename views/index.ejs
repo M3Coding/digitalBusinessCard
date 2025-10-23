@@ -60,29 +60,29 @@
                 
             </div> 
             <div class="col-md-10 mx-auto col-lg-5"> 
-                <form class="p-4 p-md-5 border rounded-3 bg-body-tertiary" onsubmit="sendSMS(); return false;"> 
-                    <div class="form-floating mb-3"> 
-                        <input type="text" class="form-control" id="name" placeholder="Full Name"> 
+                <form class="p-4 p-md-5 border rounded-3 bg-body-tertiary" action="/submit" method="POST" > 
+                    <div class="form-floating mb-3 "> 
+                        <input type="text" class="form-control" name="name" id="name" placeholder="Full Name"> 
                         <label for="floatingInput">Name</label> 
                     </div> 
                     <div class="form-floating mb-3"> 
-                        <input type="email" class="form-control" id="email" placeholder="name@example.com"> 
+                        <input type="email" class="form-control" name="email" id="email" placeholder="name@example.com"> 
                         <label for="floatingInput">Email address</label> 
                     </div> 
                     <div class="form-floating mb-3"> 
-                        <input type="tel" class="form-control" id="phone" placeholder="Phone #"> 
+                        <input type="tel" class="form-control" name="phone" id="phone" placeholder="Phone #"> 
                         <label for="floatingInput">Phone</label> 
                     </div> 
                     <div class="form-floating mb-3"> 
-                        <input type="text" class="form-control" id="address" placeholder="Address"> 
+                        <input type="text" class="form-control" name="address" id="address" placeholder="Address"> 
                         <label for="floatingPassword">Address</label> 
                     </div> 
                     <div class="form-floating mb-3"> 
-                        <input type="datetime-local" class="form-control" id="date" placeholder="Date/Time"> 
+                        <input type="datetime-local" class="form-control" id="date" name="date" placeholder="Date/Time"> 
                         <label for="floatingPassword">Requested Appointment Date/Time</label> 
                     </div> 
                     
-                    <button class="w-100 btn btn-lg btn-primary" type="submit">Submit</button>
+                    <button class="w-100 btn btn-lg btn-primary" id="submit" type="submit">Submit</button>
                     <hr class="my-4"> 
                     <small class="text-body-secondary">Thank you for choosing WOW Internet! Appointments are considered tentative until approved. </small> 
                 </form> 
@@ -90,24 +90,7 @@
         </div> 
         <hr style="width:100%;">
     </div>
-    <script>
-    function sendSMS() {
-         const message = {
-            name: document.getElementById("name").value,
-            email: document.getElementById("email").value,
-            phone: document.getElementById("phone").value,
-            address: document.getElementById("address").value,
-            date: document.getElementById("date").value
-        };
-
-        
-        const smsBody = `Name: ${message.name}\nEmail: ${message.email}\nPhone: ${message.phone}\nAddress: ${message.address}\nRequested Appointment Date/Time: ${message.date}`.trim();
-        const encodedMessage = encodeURIComponent(smsBody);
-        const phoneNumber = "+19125893385";
-
-       window.location.href = `sms:${phoneNumber},?body=${encodedMessage}`; 
-    }
-</script>
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
     
 
