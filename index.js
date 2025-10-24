@@ -16,7 +16,7 @@ const client = RestClient(
     token,
     {signalwireSpaceUrl: space}
 )
-app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.urlencoded({extended:true}));//middleware to parse data from index.ejs from the form
 app.use(express.static("public"));
 app.set('view engine', 'ejs');
 
@@ -36,7 +36,7 @@ async function sendMessage(from, body, to) {
         console.log(error.response?.data)
     }
     
-}
+} // function that takes the data and uses the signalwire client to send message to the personal number. 
 
 
 app.get("/", (req, res) => {
@@ -54,9 +54,9 @@ app.post("/submit", async (req, res) => {
     const appt= req.body.date;
 
     const formData = `Name: ${name}\n Email: ${email}\n Phone Number: ${phone} \n Address: ${address}\n Appointment Request Date: ${appt} \n`
-    console.log(formData);
+    console.log(formData); //template for the form data sent to the pn
     try {
-        await sendMessage(number, formData, personalNum)
+        await sendMessage(number, formData, personalNum)//use the send message function to get the data from the form and send to personal num when the person hits submit. 
         res.redirect("/thank-you");
 
     } catch (error) {
