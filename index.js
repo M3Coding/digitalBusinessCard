@@ -11,7 +11,9 @@ const projectID= process.env.SW_PROJECT;
 const number = process.env.SW_NUMBER;
 const personalNum = process.env.PERSONAL_NUMBER;
 
-const client = RestClient(
+
+
+const client = new RestClient(
     projectID,
     token,
     {signalwireSpaceUrl: space}
